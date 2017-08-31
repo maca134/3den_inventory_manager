@@ -34,10 +34,15 @@ private _percent = if (_totalLoad isEqualTo 0 || _maximumLoad isEqualTo 0) then 
 
 private _display = uiNamespace getVariable ['EdenInventoryManager', displayNull];
 private _capacityForeground = _display displayCtrl 1009;
+if (_percent > 1) then {
+	_capacityForeground ctrlSetBackgroundColor [1,0.1,0.1,0.75];
+} else {
+	_capacityForeground ctrlSetBackgroundColor [1,1,1,0.75];
+};
 _capacityForeground ctrlSetPosition [
 	0.525,
 	0.15,
-	(18 * _percent) * 0.025,
+	(18 min (18 * _percent)) * 0.025,
 	0.02
 ];
 _capacityForeground ctrlCommit 0;
