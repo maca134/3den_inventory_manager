@@ -11,14 +11,14 @@ for "_a" from 0 to 3 do {
 	private _b = _tree tvCount [_a];
 	private _items = [];
 	private _amounts = [];
-	for "_c" from 0 to _b do {
+	for "_c" from 0 to _b-1 do {
 		_items pushBack (_tree tvData [_a, _c]);
 		_amounts pushBack (_tree tvValue [_a, _c]);
 	};
 	_inventory pushBack [_items, _amounts];
 };
 if (is3DEN) then {
-	_target set3DENAttribute ['ammoBox', [_inventory, false]];
+	_target set3DENAttribute ['ammoBox', str [_inventory, false]];
 } else {
 	[_target, [_inventory, false]] call BIS_fnc_initAmmoBox;
 };

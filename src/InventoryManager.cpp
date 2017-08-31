@@ -36,14 +36,18 @@ class RscButton;
 class RscListbox;
 class RscEdit;
 class RscTree;
+class ctrlStaticBackgroundDisable;
+class ctrlStaticBackgroundDisableTiles;
 
 class EdenInventoryManager {
 	idd = 11548;
-	movingenable = 0;
-	enablesimulation = 1;
+	enableSimulation = 1;
+	enableDisplay = 1;
 	onLoad = "uiNamespace setVariable ['EdenInventoryManager', _this select 0]";
 	onUnload = "uiNamespace setVariable ['EdenInventoryManager', displayNull]";
-	class controlsBackground {
+	class controlsBackground {		
+		class BackgroundDisableTiles : ctrlStaticBackgroundDisableTiles {};
+		class BackgroundDisable : ctrlStaticBackgroundDisable {};
 		class background: RscText
 		{
 			idc = -1;

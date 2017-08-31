@@ -4,12 +4,14 @@ params [
 if (isNull _target) then {
 	_target = if ((count (get3DENSelected 'object')) > 0) then {(get3DENSelected 'object') select 0} else {objNull};
 };
-if (isNull _target) exitWith {hint 'Can not find target'};
+if (isNull _target) exitWith {
+	['No objects selected', 1] call EIM_fnc_message;
+};
 if ((getNumber (configFile >> 'CfgVehicles' >> typeOf _target >> 'maximumLoad')) isEqualTo 0) exitWith {
-	['You can only add inventory to objects it space for it'] call EIM_fnc_message;
+	['You can only add inventory to objects it space for it', 1] call EIM_fnc_message;
 };
 disableSerialization;
-createDialog 'EdenInventoryManager';
+(findDisplay 313) createDisplay 'EdenInventoryManager';
 waitUntil {!isNull (uiNamespace getVariable ['EdenInventoryManager', displayNull])};
 private _display = uiNamespace getVariable ['EdenInventoryManager', displayNull];
 if (isNil 'EIM_itemCache') then {

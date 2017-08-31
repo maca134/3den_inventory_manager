@@ -44,14 +44,20 @@ class CfgFunctions {
 };
 
 class ctrlMenuStrip;
-class display3DEN {
+class Display3DEN {
 	class Controls {
-		class Items {
-			items[] += {"EIM_InventoryManager"};
-		};
-		class EIM_InventoryManager {
-			text = "InventoryManager";
-			action = "[] call EIM_fnc_open;";
+		class MenuStrip : ctrlMenuStrip {
+			class Items {
+				items[] += {"EIM_InventoryManager"};
+				class EIM_InventoryManager {
+					text = "Inventory Manager";
+					items[] = {"EIM_InventoryManager_Open"};
+				};
+				class EIM_InventoryManager_Open {
+					text = "Open";
+					action = "[] call EIM_fnc_open;";
+				};
+			};
 		};
 	};
 };

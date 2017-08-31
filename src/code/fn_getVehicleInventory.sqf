@@ -6,7 +6,7 @@ if (is3DEN) then {
 	if (isNil '_ammoBox') then {
 		_ammoBox = [[[[],[]],[[],[]],[[],[]],[[],[]]],false];
 	};
-	_ammoBox select 0
+	(parseSimpleArray _ammoBox) select 0
 } else {
 	[getWeaponCargo _target, getMagazineCargo _target, getItemCargo _target, getBackpackCargo _target]
 }
